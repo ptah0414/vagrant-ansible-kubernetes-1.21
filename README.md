@@ -1,2 +1,2 @@
-# vagrant-ansible-kubernetes-1.21
+# vagrant-ansible-kubernetes
  
