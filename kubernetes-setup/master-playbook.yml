@@ -1,4 +1,4 @@
-﻿---
+---
 # 2.1 Install Docker and its dependent components. 
 - hosts: all
   become: true
@@ -85,6 +85,7 @@
     lineinfile:
       path: /etc/default/kubelet
       line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      create: yes 
 
   - name: Restart kubelet
     service:
