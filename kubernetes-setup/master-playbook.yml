@@ -36,6 +36,7 @@
       - docker-ce 
       - docker-ce-cli 
       - containerd.io
+      - pip3 # for docker hub login 
     notify:
       - docker status
 
@@ -43,6 +44,17 @@
     user:
       name: vagrant
       group: docker
+
+# docker login 
+  - name: Install docker
+    ansible.builtin.pip:
+      name: docker
+      executable: pip3
+
+  - name: Log into DockerHub
+    docker_login:
+      username: [your username, not email address]
+      password: [your password]
 
 # 2.2 Kubelet will not start if the system has swap enabled, so we are disabling swap using the below code.
   - name: Remove swapfile from /etc/fstab
