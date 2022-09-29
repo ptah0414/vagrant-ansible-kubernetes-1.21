@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
         config.vm.define "node-#{i}" do |node|
             node.vm.box = IMAGE_NAME
             node.vm.network "private_network", ip: "10.10.10.#{i + 10}"
-	    node.network "public_network", :dev => "br0", :type =>"bridge" # 
+	    node.vm.network "public_network", :dev => "br0", :type =>"bridge" # 
             node.vm.hostname = "node-#{i}"
 #            node.vm.provision "ansible" do |ansible|
 #                ansible.playbook = "kubernetes-setup/node-playbook.yml"
