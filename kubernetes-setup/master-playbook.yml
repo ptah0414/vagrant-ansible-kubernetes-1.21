@@ -36,7 +36,7 @@
       - docker-ce 
       - docker-ce-cli 
       - containerd.io
-      - pip3 # for docker hub login 
+      - python3-pip # for docker hub login 
     notify:
       - docker status
 
