@@ -20,7 +20,6 @@ Vagrant.configure("2") do |config|
                 node_ip: "10.10.10.10",
             }
         end
-        end
     end
 
     (1..N).each do |i|
