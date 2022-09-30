@@ -12,28 +12,28 @@ Vagrant.configure("2") do |config|
     config.vm.define "k8s-master" do |master|
         master.vm.box = IMAGE_NAME
         master.vm.network "private_network", ip: "10.10.10.10"
-	master.vm.network "public_network", :dev => "br0", :type =>"bridge" # 
+	master.vm.network "public_network", :dev => "br0", :type =>"bridge"  
         master.vm.hostname = "k8s-master"
-        master.vm.provision "ansible" do |ansible|
-            ansible.playbook = "kubernetes-setup/master-playbook.yml"
-            ansible.extra_vars = {
-                node_ip: "10.10.10.10",
-            }
-        end
+        master.vm.provision "ansible" do |ansible|                              #1 
+           ansible.playbook = "kubernetes-setup/master-playbook.yml"            #1 
+            ansible.extra_vars = {                                              #1 
+                node_ip: "10.10.10.10",                                         #1 
+            }                                                                   #1 
+        end                                                                     #1 
     end
 
     (1..N).each do |i|
         config.vm.define "node-#{i}" do |node|
             node.vm.box = IMAGE_NAME
             node.vm.network "private_network", ip: "10.10.10.#{i + 10}"
-	    node.vm.network "public_network", :dev => "br0", :type =>"bridge" # 
+	    node.vm.network "public_network", :dev => "br0", :type =>"bridge" 
             node.vm.hostname = "node-#{i}"
-#            node.vm.provision "ansible" do |ansible|
-#                ansible.playbook = "kubernetes-setup/node-playbook.yml"
-#                ansible.extra_vars = {
-#                    node_ip: "10.10.10.#{i + 10}",
-#                }
-#            end
+#            node.vm.provision "ansible" do |ansible|                           #2 
+#                ansible.playbook = "kubernetes-setup/node-playbook.yml"        #2 
+#                ansible.extra_vars = {                                         #2
+#                    node_ip: "10.10.10.#{i + 10}",                             #2 
+#                }                                                              #2 
+#            end                                                                #2 
         end
     end
 end
