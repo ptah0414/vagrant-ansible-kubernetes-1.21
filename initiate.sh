@@ -6,4 +6,8 @@ vagrant destroy -f \
 # provision nodes 
 && sed '/#1/s/^/#/' Vagrantfile \
 && sed '/\#2/d' Vagrantfile \
-&& vagrant provision
+&& vagrant provision \
+# k8s creation check 
+&& vagrant ssh k8s-master \
+&& kubectl get nodes \
+&& kubectl get pods -n kube-system
