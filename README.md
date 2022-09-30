@@ -1,5 +1,34 @@
 # vagrant-ansible-kubernetes
  
+## Prerequisite
+### Install Vagrant and Ansible 
+- Install Ansible 
+```shell
+yum -y install epel-release 
+yum -y install ansible 
+```
+
+- Add vagrant repo 
+```shell
+yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+```
+
+- Install vagrant and related packages  
+```shell
+yum -y install libvirt-daemon-kvm libvirt-client vagrant gcc-c++ make libstdc++-devel libvirt-devel
+```
+
+- restart libvirt
+```shell
+systemctl restart libvirtd
+```
+
+- Install vagrant-libvirt plugin  
+```shell
+vagrant plugin install vagrant-libvirt
+```
+
+## Kubernetes Setup 
 step 1. Enter your username and password in master-playbook.yml file
 ```yaml 
   - name: Log into DockerHub
