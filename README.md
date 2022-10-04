@@ -1,4 +1,4 @@
-# vagrant-ansible-kubernetes
+# Kubernetes 1.21 Setup Using Ansible and Vagrant
  
 ## Prerequisite
 ### Install Vagrant and Ansible 
